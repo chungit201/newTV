@@ -4,7 +4,8 @@ const userRoute = require("./user.route");
 const docsRoute = require("./docs.route");
 const videoRoute = require("./video.route");
 const config = require("../../config/config");
-const categoryRoute = require("./categories.route")
+const categoryRoute = require("./categories.route");
+const displayRoute = require('./display.route')
 const router = express.Router();
 
 const defaultRoutes = [
@@ -23,6 +24,10 @@ const defaultRoutes = [
   {
     path: "/categories",
     route:categoryRoute
+  },
+  {
+    path: '/displays',
+    route:displayRoute
   }
 ];
 

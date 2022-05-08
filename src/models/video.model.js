@@ -16,13 +16,15 @@ const videoSchema = new mongoose.Schema(
       type: String,
     },
     privacy: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:"Display"
     },
     filePath: {
       type: String,
     },
     category: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:"Category"
     },
     views: {
       type: Number,

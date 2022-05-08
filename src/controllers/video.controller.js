@@ -69,7 +69,7 @@ const uploadFile = catchAsync(async (req, res) => {
 
 
 const getVideos = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ["name", "role"]);
+  const filter = pick(req.query, ["name", "category"]);
   const options = pick(req.query, ["sortBy", "limit", "page"])
   const result = await videoService.queryVideo(filter, options)
   res.send(result)

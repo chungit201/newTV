@@ -5,9 +5,15 @@ const ApiError = require("../utils/ApiError");
 const createVideo = async (videoBody) => {
   const createVideo = await Video.create(videoBody);
   let video = await Video.findOne(createVideo).populate({
-    path: "author",
+    path: "writer",
     model: "User",
+
   });
+  video = {
+    ...video._doc,
+    createdAt: new Date(video.createdAt).getTime(),
+  };
+
   return video;
 };
 
@@ -21,8 +27,8 @@ const createVideo = async (videoBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryVideo = async (filter, options) => {
-  const videos = await Video.paginate(filter, options);
-  return videos;
+  Object.assign(options, {populate: "writer privacy category"});
+  return Video.paginate(filter, options)
 };
 
 /**

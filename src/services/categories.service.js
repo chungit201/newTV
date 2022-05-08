@@ -17,7 +17,7 @@ const  createCategory = async (categoryBody)=>{
 
 const queryCategory = async (filter, options) =>{
   const category = await Category.paginate(filter,options)
-  return category
+  return category;
 }
 
 const categoryById = async (categoryId) =>{
